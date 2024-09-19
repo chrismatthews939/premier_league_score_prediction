@@ -2,7 +2,7 @@ Overviewc# Premier League Result Prediction ML Project
 
 ## Overview
 
-The **Premier League Result Predictor** is an ML project designed to teach a beginner or practice the basics of machine learning in python. The steps are data preprocessing, exploratory data analysis, feature engineering, model training and ultimately testing various ML models to see which perform best for predicting the result of football matches using evalution metrics. In this project I tested logistic regression, xgboost and random forest. I built a webscraper to extract the data for the last four premier league seasons from www.football-data.co.uk (file outputs included).
+The **Premier League Result Predictor** is an ML project designed to teach a beginner or practice the basics of machine learning in python. The steps are data preprocessing, exploratory data analysis, feature engineering, model training and ultimately testing various ML models to see which perform best for predicting the result of football matches using evalution metrics. In this project I tested logistic regression, xgboost and random forest. I built a webscraper to extract the data for the last four premier league seasons from www.football-data.co.uk (file outputs included). The model and scaler snapshots are saved using pickle for easy access and performance.
 
 ## Features
 
@@ -23,6 +23,7 @@ The **Premier League Result Predictor** is an ML project designed to teach a beg
 ## Installation
 - **sklearn**: Modelling.
 - **BeautifulSoup**: Webscraper.
+- **pickle**: Saving snapshot of model and model weights.
 
 ### Prerequisites
 
