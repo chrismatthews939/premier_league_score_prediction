@@ -19,8 +19,8 @@ with open(os.path.join(base_dir, '../models/scaler.pkl'), 'rb') as f:
 data = pd.read_csv(data_file)
 
 # Set the teams for prediction
-home_team = 'Tottenham'
-away_team = 'Arsenal'
+home_team = 'Chelsea'
+away_team = 'Man City'
 
 # Function to calculate team averages based on new column structure
 def calculate_team_averages(team_name, data):
