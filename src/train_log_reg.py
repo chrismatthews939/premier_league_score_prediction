@@ -56,5 +56,5 @@ with open(os.path.join(base_dir, '../models/logistic_regression_model.pkl'), 'wb
     pickle.dump(model, f)
 
 # Save the scaler for future use
-with open(os.path.join(base_dir, '../models/scaler.pkl'), 'wb') as f:
+with open(os.path.join(base_dir, '../models/scaler_logistic_regression.pkl'), 'wb') as f:
     pickle.dump(scaler, f)

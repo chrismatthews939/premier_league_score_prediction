@@ -12,15 +12,15 @@ data_file = os.path.join(base_dir, '../data/football_data_cleaned.csv')
 with open(os.path.join(base_dir, '../models/logistic_regression_model.pkl'), 'rb') as f:
     model = pickle.load(f)
 
-with open(os.path.join(base_dir, '../models/scaler.pkl'), 'rb') as f:
+with open(os.path.join(base_dir, '../models/scaler_logistic_regression.pkl'), 'rb') as f:
     scaler = pickle.load(f)
 
 # Load historical data to estimate features
 data = pd.read_csv(data_file)
 
 # Set the teams for prediction
-home_team = 'Chelsea'
-away_team = 'Man City'
+home_team = 'West Ham'
+away_team = 'Chelsea'
 
 # Function to calculate team averages based on new column structure
 def calculate_team_averages(team_name, data):
