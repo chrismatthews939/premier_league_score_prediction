@@ -26,11 +26,36 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# Initialize XGBoost Classifier with parameters (you can tune these later)
-xgb_model = xgb.XGBClassifier(objective='multi:softprob', num_class=3, random_state=42)
+# Initialize XGBoost Classifier with regularization to prevent overfitting
+xgb_model = xgb.XGBClassifier(
+    objective='multi:softprob',  # Multi-class classification
+    num_class=3,                 # 3 possible outcomes: Home Win, Draw, Away Win
+    random_state=42,             # Reproducibility
+    max_depth=4,                 # Limit the depth of the trees (regularization)
+    n_estimators=100,            # Reduce the number of trees
+    learning_rate=0.1,           # Learning rate (smaller value for slower training)
+    reg_alpha=0.1,               # L1 regularization term on weights (encourages sparsity)
+    reg_lambda=1,                # L2 regularization term on weights (prevents overfitting)
+    subsample=0.8,               # Subsample ratio (randomly samples 80% of data for each tree)
+    colsample_bytree=0.8,        # Subsample ratio of columns for each tree
+    early_stopping_rounds=10     # Stop training if there's no improvement after 10 rounds
+)
 
-# Train the XGBoost model
-xgb_model.fit(X_train_scaled, y_train)
+# Use early stopping during training to prevent overfitting
+evals = [(X_test_scaled, y_test)]  # Evaluation set
+evals_result = {}  # To store the evaluation results
+
+# Train the model with early stopping
+xgb_model.fit(
+    X_train_scaled, 
+    y_train, 
+    eval_set=evals,              # Pass the evaluation set
+    early_stopping_rounds=10,    # Stop training if no improvement after 10 rounds
+    verbose=True
+)
+
+# Save the evaluation results (optional, for analysis)
+print("Evaluation history:", xgb_model.evals_result())
 
 # Make predictions on the test set
 y_pred_xgb = xgb_model.predict(X_test_scaled)
