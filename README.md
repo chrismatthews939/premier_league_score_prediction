@@ -1,4 +1,4 @@
-Overview Premier League Result Prediction ML Project
+Premier League Result Prediction ML Project
 
 ## Overview
 
